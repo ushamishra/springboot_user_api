@@ -1,0 +1,63 @@
+
+pipeline {
+    agent any
+
+    options {
+        timestamps()
+        disableConcurrentBuilds()
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out GitHub repository'
+                checkout scm
+            }
+        }
+
+        stage('Verify Java and Maven') {
+            steps {
+                bat 'java -version'
+                bat 'mvn -version'
+            }
+        }
+
+        stage('Build, Test and Quality Checks') {
+            steps {
+                echo 'Running Maven build and quality checks'
+                bat 'mvn -B -ntp clean verify'
+            }
+        }
+
+        stage('Publish Test Results') {
+            steps {
+                junit allowEmptyResults: true,
+                      testResults: '**/target/surefire-reports/*.xml'
+            }
+        }
+
+        stage('Archive Artifacts and Reports') {
+            steps {
+                archiveArtifacts(
+                    artifacts: 'target/*.jar, target/site/jacoco/**, target/checkstyle-result.xml',
+                    allowEmptyArchive: true
+                )
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'SUCCESS: Build, tests and quality checks passed!'
+        }
+
+        failure {
+            echo 'FAILURE: Please check the Jenkins console output.'
+        }
+
+        always {
+            echo 'Pipeline execution completed.'
+        }
+    }
+}

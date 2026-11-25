@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.21.1">
+<file name="D:\SoftwareTraining\Springboot\user-api-spring-boot\user-api\src\main\java\com\example\userapi\controller\UserController.java">
+<error line="11" column="1" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="18" column="3" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="22" column="3" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+</file>
+<file name="D:\SoftwareTraining\Springboot\user-api-spring-boot\user-api\src\main\java\com\example\userapi\model\User.java">
+<error line="3" column="1" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="8" column="3" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+<error line="10" column="3" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+</file>
+<file name="D:\SoftwareTraining\Springboot\user-api-spring-boot\user-api\src\main\java\com\example\userapi\service\UserService.java">
+<error line="7" column="1" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+</file>
+<file name="D:\SoftwareTraining\Springboot\user-api-spring-boot\user-api\src\main\java\com\example\userapi\UserApiApplication.java">
+<error line="6" column="1" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck"/>
+<error line="9" column="3" severity="warning" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck"/>
+</file>
+<file name="D:\SoftwareTraining\Springboot\user-api-spring-boot\user-api\src\test\java\com\example\userapi\controller\UserControllerTest.java">
+<error line="28" column="8" severity="warning" message="Method name &apos;getUsers_ShouldReturnJsonArrayOfUsers&apos; must match pattern &apos;^[a-z][a-z0-9][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+</file>
+<file name="D:\SoftwareTraining\Springboot\user-api-spring-boot\user-api\src\test\java\com\example\userapi\service\UserServiceTest.java">
+<error line="21" column="8" severity="warning" message="Method name &apos;getUsers_ShouldReturnListOfThreeUsers&apos; must match pattern &apos;^[a-z][a-z0-9][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+</file>
+</checkstyle>

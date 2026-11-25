@@ -1,10 +1,13 @@
-
 pipeline {
     agent any
 
     options {
         timestamps()
         disableConcurrentBuilds()
+    }
+
+    environment {
+        APP_DIR = 'user-api-spring-boot/user-api'   // CHANGED: folder containing pom.xml
     }
 
     stages {
@@ -26,23 +29,27 @@ pipeline {
         stage('Build, Test and Quality Checks') {
             steps {
                 echo 'Running Maven build and quality checks'
-                bat 'mvn -B -ntp clean verify'
+                dir("${env.APP_DIR}") {                 // CHANGED: run Maven where pom.xml is
+                    bat 'mvn -B -ntp clean verify'
+                }
             }
         }
 
         stage('Publish Test Results') {
             steps {
                 junit allowEmptyResults: true,
-                      testResults: '**/target/surefire-reports/*.xml'
+                        testResults: '**/target/surefire-reports/*.xml'   // already works with subfolders
             }
         }
 
         stage('Archive Artifacts and Reports') {
             steps {
-                archiveArtifacts(
-                    artifacts: 'target/*.jar, target/site/jacoco/**, target/checkstyle-result.xml',
-                    allowEmptyArchive: true
-                )
+                dir("${env.APP_DIR}") {                 // CHANGED: archive from the project folder
+                    archiveArtifacts(
+                            artifacts: 'target/*.jar, target/site/jacoco/**, target/checkstyle-result.xml',
+                            allowEmptyArchive: true
+                    )
+                }
             }
         }
     }
